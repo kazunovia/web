@@ -12,10 +12,10 @@ node_modules
 .env.development.local
 .env.test.local
 .env.production.local
+./testplane/testplane-tests/data.ts
 ./fe-tests/tests/state/
 ./fe-tests/tests/state/user.json
 ./fe-tests/tests/state/stateMaker.spec.ts
-./testplane/testplane-tests/data.ts
 .vscode/
 
 # Testing
