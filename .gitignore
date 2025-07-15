@@ -1,3 +1,4 @@
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # Dependencies
@@ -14,6 +15,7 @@ node_modules
 ./fe-tests/tests/state/
 ./fe-tests/tests/state/user.json
 ./fe-tests/tests/state/stateMaker.spec.ts
+./testplane/testplane-tests/data.ts
 .vscode/
 
 # Testing
