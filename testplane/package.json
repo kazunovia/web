@@ -9,7 +9,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
     "html-reporter": "^10.18.7",
     "testplane": "^8.29.5",

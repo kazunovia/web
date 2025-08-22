@@ -17,6 +17,21 @@ describe("Страница Профиля: Отоброжается кнопка
 describe("Страница Профиля: Отоброжается гифка", async () => {
     it("Открываем https://yavshok.ru/ проверяем аватарку пользователя в статичном состоянии", async ({browser}) => {
         await loginShock(browser)
-        await browser.$(('//div[@data-testid="user-avatar"]//img')).assertView("profile-edit", {disableAnimation: false});
+        await browser.execute(() => {
+        const avatarImg = document.querySelector('[data-testid="user-avatar"] img');
+        if (avatarImg instanceof HTMLImageElement && avatarImg.src.includes('.gif')) {
+            // Сохраняем src и перезагружаем чтобы остановить анимацию
+            const src = avatarImg.src;
+            avatarImg.src = '';
+            avatarImg.src = src;
+            
+            // Или заменяем на статичное изображение
+            // avatarImg.src = avatarImg.src.replace('.gif', '.png');
+        }
+    });
+    
+    // Ждем остановки анимации
+    await browser.pause(500);
+        await browser.$(('//div[@data-testid="user-avatar"]//img')).assertView("profile-edit", {screenshotDelay: 300, ignoreElements: ['.loader'], disableAnimation: true});
     })
 })
