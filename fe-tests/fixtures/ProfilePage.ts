@@ -1,8 +1,10 @@
 import type { Page, Locator} from "@playwright/test";
+import { expect } from "@playwright/test";
+
 
 export class ProfilePage{
-    public edit: Locator;
-    public logout: Locator;
+    private edit: Locator;
+    private logout: Locator;
 
     
     constructor(public readonly page: Page){
@@ -12,5 +14,15 @@ export class ProfilePage{
 
     public async open() {
         await this.page.goto("/");
+    }
+
+    public async clickEdit() {
+        await expect(this.edit).toBeVisible();
+        await this.edit.click();
+    }
+
+    public async clickLogout() {
+        await expect(this.logout).toBeVisible();
+        await this.logout.click();
     }
 }

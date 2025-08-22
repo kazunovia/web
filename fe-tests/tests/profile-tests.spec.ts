@@ -8,10 +8,9 @@ test("Страница Профиля: Ведёт ли кнопка Logout на 
         await profilePage.open();
         await test.step("Открыта страница профиля https://yavshok.ru/", async () => {
             await expect(profilePage.page).toHaveURL("/");
-            await expect(profilePage.logout).toBeVisible();
         })
         await test.step("Нажать кнопку Logout", async () => {
-            await profilePage.logout.click();
+            await profilePage.clickLogout();
         })
         await test.step("Открыта начальная страница https://yavshok.ru/", async () => {
             await expect(profilePage.page).toHaveURL("/");
@@ -25,10 +24,9 @@ test("Страница Профиля: Ведёт ли кнопка Edit Profile
         await profilePage.open();
         await test.step("Открыта страница профиля https://yavshok.ru/", async () => {
             await expect(profilePage.page).toHaveURL("/");
-            await expect(profilePage.logout).toBeVisible();
         })
         await test.step("Нажать кнопку Edit Profile", async () => {
-            await profilePage.edit.click();
+            await profilePage.clickEdit()
         })
         await test.step("Открыта страница смены имени https://yavshok.ru/edit", async () => {
             await expect(profilePage.page).toHaveURL(new RegExp('.*yavshok.ru\/edit(?!\/)'));
