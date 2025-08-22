@@ -1,12 +1,13 @@
 import type { Page, Locator} from "@playwright/test";
+import { expect } from "@playwright/test";
 
 export class LoginPage {
-    public title: Locator;
-    public email: Locator;
-    public password: Locator;
-    public registration: Locator;
-    public return: Locator;
-    public shok: Locator;
+    private title: Locator;
+    private email: Locator;
+    private password: Locator;
+    private registration: Locator;
+    private return: Locator;
+    private shok: Locator;
 
     constructor(public readonly page: Page) {
         this.title = page.getByText("Войти в ШОК");
@@ -21,14 +22,42 @@ export class LoginPage {
         await this.page.goto("/login");
     }
 
-    public async login(email: string | null, password: string | null) {
-        if (email){
-            await this.email.fill(email);
-        }
-        if (password){
+    public async isTitleVisiable(){
+        expect(await this.title).toBeVisible();
+    }
+
+    public async fillEmail(email: string){
+        expect(await this.email).toBeVisible();
+        await this.email.fill(email);
+    }
+
+    public async fillPassword(password: string){
+        expect(await this.password).toBeVisible();
         await this.password.fill(password);
-        }
+    }
+
+    public async clickShok(){
+        expect(await this.shok).toBeVisible();
         await this.shok.click();
     }
-    
+
+    public async clickReturn(){
+        expect(await this.return).toBeVisible();
+        await this.return.click();
+    }
+
+    public async clickRegistration(){
+        expect(await this.registration).toBeVisible();
+        await this.registration.click();
+    }
+
+    public async login(email: string | null, password: string | null) {
+        if (email){
+            await this.fillEmail(email);
+        }
+        if (password){
+        await this.fillPassword(password);
+        }
+        await this.clickShok();
+    }
 }
