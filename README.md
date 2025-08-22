@@ -1,3 +1,29 @@
+# Playwright tests
+
+Автотесты лежат в директории fe-tests/
+
+В директори tests лежат автотесты
+
+В директории fixtures лежат фикстуры в стиле pageObject
+
+Запуск тестов
+
+```bash
+   npx playwright test
+   ```
+
+Просмотр allure отчёта 
+
+```bash
+   allure serve allure-results
+   ```
+
+# Testplane tests (скриншотное тестирование)
+
+Автотесты лежат в директории testplane/
+
+В директори testplane-tests лежат автотесты
+
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
