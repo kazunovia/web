@@ -6,10 +6,11 @@ test("Страница изменения имени: Кнопка Cancel вед
     await test.step("Отображается ли страница изменения имени", async ({}) => {
             await namePage.open();
             await test.step("Отображается страница изменения имени https://yavshok.ru/edit", async () => {
-                    await expect(namePage.page).toHaveURL(new RegExp('.*yavshok.ru\/edit(?!\/)'));
+                await expect(namePage.page).toHaveURL(new RegExp('.*yavshok.ru\/edit(?!\/)'));
+                await namePage.isTitleVisiable();
             })
             await test.step("Нажимаем кнопку назад", async () => {
-                await namePage.cancel.click();
+                await namePage.clickCancel();
             })
             await test.step("Отображается экран профиля", async () => {
                  await expect(namePage.page).toHaveURL("/")
@@ -22,13 +23,14 @@ test("Страница изменения имени: Появляется ли 
     await test.step("Отображается ли страница изменения имени", async ({}) => {
             await namePage.open();
             await test.step("Отображается страница изменения имени https://yavshok.ru/edit", async () => {
-                    await expect(namePage.page).toHaveURL(new RegExp('.*yavshok.ru\/edit(?!\/)'));
+                await expect(namePage.page).toHaveURL(new RegExp('.*yavshok.ru\/edit(?!\/)'));
+                await namePage.isTitleVisiable();
             })
             await test.step("Проверяем имя в поле ввода", async () => {
-                name = await namePage.name.getAttribute('value');
+                name = await namePage.getName();
             })
             await test.step("Возвращаемся на экран профиля", async () => {
-                await namePage.cancel.click();
+                await namePage.clickCancel();
             })
             await test.step("Отображается экран профиля", async () => {
                  await expect(namePage.page).toHaveURL("/")
@@ -44,17 +46,18 @@ test("Страница изменения имени: Изменение име�
     await test.step("Отображается ли страница изменения имени", async ({}) => {
             await namePage.open();
             await test.step("Отображается страница изменения имени https://yavshok.ru/edit", async () => {
-                    await expect(namePage.page).toHaveURL(new RegExp('.*yavshok.ru\/edit(?!\/)'));
+                await expect(namePage.page).toHaveURL(new RegExp('.*yavshok.ru\/edit(?!\/)'));
+                await namePage.isTitleVisiable();
             })
             await test.step("Вводим новое имя", async () => {
-                await namePage.name.fill("newName");
+                await namePage.fillName("newName")
             })
             await test.step("Сохраняем имя и возвращаемся на экран профиля", async () => {
-                await namePage.save.click();
+                await namePage.clickSave();
                 await expect(namePage.page.getByText("Saving...")).not.toBeVisible();
             })
             await test.step("Возвращаемся на экран профиля", async () => {
-                await namePage.cancel.click();
+                await namePage.clickCancel();
             })
             await test.step("Отображается экран профиля", async () => {
                 await expect(namePage.page).toHaveURL("/");
